@@ -7,10 +7,6 @@
 ![lowlevel](https://user-images.githubusercontent.com/68550769/161942888-fa56e6e3-7522-4848-b877-a52848b4ec43.jpg)
 
 # Structural Diagram
-## HIGH LEVEL UML
-
-
-## LOW LEVEL UML
 ![lowlevel uml](https://user-images.githubusercontent.com/68550769/161942879-d80ff6fe-a50a-4a56-a0e5-96e8de91d0d4.jpg)
 
 ## Best method followed
