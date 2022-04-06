@@ -14,7 +14,7 @@ Employees and Interns of L&T company members can acces
 
 ## When
 
-every day we can use
+
 
 ## What
 
@@ -37,6 +37,23 @@ we use software to store in database
 
 # High Level Requirements
 
+| ID  | High level requirements |
+| ------------- | ------------- |
+| HL1 | admin shall be able to add Employee record |
+| HL2 | admin  shall be able to display Employee record |
+| HL3 | admin shall be able to update a Employee record |
+| HL4 | admin shall be able to delete a Employee record |
+| HL5 | admin shall be able to save records in a file |
+| HL6 | admin shall be able to read data from a file |
+| HL7 | Data should be stored when closing the system |
+
 
 # Low Level Requirements
+
+| ID  | Low level requirements |
+| ------------- | ------------- |
+| L1 | New record is added and Employee id should be unique |
+| L2 | Finding the Employee details can be either by searching by name or the best way of searching is by psnumber |
+| L3 | If user searches for an invalid ID ""ERROR RECORD NOT FOUND" message should be displayed |
+| L4 | If opening the login page fails system shloud prompt the message "Invalid login" |
 
