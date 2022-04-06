@@ -14,7 +14,7 @@ Employees and Interns of L&T company members can acces
 
 ## When
 
-
+In the office time.
 
 ## What
 
@@ -33,6 +33,8 @@ To save time and efforts
 we use software to store in database
 
 # SWOT
+
+![swot](https://user-images.githubusercontent.com/68550769/162017373-1b0f93b5-ae8b-4dcb-9151-0554dd700c34.jpg)
 
 
 # High Level Requirements
