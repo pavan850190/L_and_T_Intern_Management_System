@@ -12,7 +12,7 @@ def display_menu():
     print(" Welcome to L&T Intern Management System")
     print("---------------------------------------")
     print("1. Intern")
-    print("2. Employe")
+    print("2. Employee")
     print("---------------------------------------")
 
 
