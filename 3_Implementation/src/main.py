@@ -21,27 +21,6 @@ def display_menu1():
     print("2. Quit")
 
 
-def attendance_intern():
-    print("-------------------------")
-    print("Mark your attendance")
-    print("-------------------------")
-    global intern_atten
-    global intern_attendance
-
-    intern_data = []
-    for field in intern_atten:
-        value = input("Enter " + field + ": ")
-        intern_data.append(value)
-
-    with open(intern_attendance, "a", encoding="utf-8") as f:
-        writer = csv.writer(f)
-        writer.writerows([intern_data])
-
-    print("Data saved successfully")
-    input("Press any key to continue")
-    return
-
-
 def display_menu2():
     print("1. Add New Intern")
     print("2. View Intern")
@@ -52,155 +31,180 @@ def display_menu2():
     print("7. Quit")
 
 
-def add_intern():
-    print("-------------------------")
-    print("Add Intern Information")
-    print("-------------------------")
-    global intern_fields
-    global intern_database
+class employee:
 
-    intern_data = []
-    for field in intern_fields:
-        value = input("Enter " + field + ": ")
-        intern_data.append(value)
+    def add_intern(self):
+        print("-------------------------")
+        print("Add Intern Information")
+        print("-------------------------")
+        global intern_fields
+        global intern_database
 
-    with open(intern_database, "a", encoding="utf-8") as f:
-        writer = csv.writer(f)
-        writer.writerows([intern_data])
+        intern_data = []
+        for field in intern_fields:
+            value = input("Enter " + field + ": ")
+            intern_data.append(value)
 
-    print("Data saved successfully")
-    input("Press any key to continue")
-    return
+        with open(intern_database, "a", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            writer.writerows([intern_data])
 
+        print("Data saved successfully")
+        input("Press any key to continue")
+        return
 
-def view_interns():
-    global intern_fields
-    global intern_database
+    def view_interns(self):
+        global intern_fields
+        global intern_database
 
-    print("--- Intern Records ---")
+        print("--- Intern Records ---")
 
-    with open(intern_database, "r", encoding="utf-8") as f:
-        reader = csv.reader(f)
-        for x in intern_fields:
-            print(x, end='\t |')
-        print("\n-----------------------------------------------------------------")
+        with open(intern_database, "r", encoding="utf-8") as f:
+            reader = csv.reader(f)
+            for x in intern_fields:
+                print(x, end='\t |')
+            print("\n-----------------------------------------------------------------")
 
-        for row in reader:
-            for item in row:
-                print(item, end="\t |")
-            print("\n")
+            for row in reader:
+                for item in row:
+                    print(item, end="\t |")
+                print("\n")
 
-    input("Press any key to continue")
+        input("Press any key to continue")
 
+    def search_intern(self):
+        global intern_fields
+        global intern_database
 
-def search_intern():
-    global intern_fields
-    global intern_database
+        print("--- Search intern ---")
+        psnumber = input("Enter psnumber no. to search: ")
+        with open(intern_database, "r", encoding="utf-8") as f:
+            reader = csv.reader(f)
+            for row in reader:
+                if len(row) > 0:
+                    if psnumber == row[0]:
+                        print("----- intern Found -----")
+                        print("psnumber: ", row[0])
+                        print("Name: ", row[1])
+                        print("Age: ", row[2])
+                        print("Email: ", row[3])
+                        print("Phone: ", row[4])
+                        break
+            else:
+                print("psnumber No. not found in our database")
+        input("Press any key to continue")
 
-    print("--- Search intern ---")
-    psnumber = input("Enter psnumber no. to search: ")
-    with open(intern_database, "r", encoding="utf-8") as f:
-        reader = csv.reader(f)
-        for row in reader:
-            if len(row) > 0:
-                if psnumber == row[0]:
-                    print("----- intern Found -----")
-                    print("psnumber: ", row[0])
-                    print("Name: ", row[1])
-                    print("Age: ", row[2])
-                    print("Email: ", row[3])
-                    print("Phone: ", row[4])
-                    break
+    def update_intern(self):
+        global intern_fields
+        global intern_database
+
+        print("--- Update intern ---")
+        psnumber = input("Enter psnumber no. to update: ")
+        index_intern = None
+        updated_data = []
+        with open(intern_database, "r", encoding="utf-8") as f:
+            reader = csv.reader(f)
+            counter = 0
+            for row in reader:
+                if len(row) > 0:
+                    if psnumber == row[0]:
+                        index_intern = counter
+                        print("intern Found: at index ", index_intern)
+                        intern_data = []
+                        for field in intern_fields:
+                            value = input("Enter " + field + ": ")
+                            intern_data.append(value)
+                        updated_data.append(intern_data)
+                    else:
+                        updated_data.append(row)
+                    counter += 1
+
+        # Check if the record is found or not
+        if index_intern is not None:
+            with open(intern_database, "w", encoding="utf-8") as f:
+                writer = csv.writer(f)
+                writer.writerows(updated_data)
         else:
             print("psnumber No. not found in our database")
-    input("Press any key to continue")
+
+        input("Press any key to continue")
+
+    def delete_intern(self):
+        global intern_fields
+        global intern_database
+
+        print("--- Delete intern ---")
+        psnumber = input("Enter psnumber no. to delete: ")
+        intern_found = False
+        updated_data = []
+        with open(intern_database, "r", encoding="utf-8") as f:
+            reader = csv.reader(f)
+            counter = 0
+            for row in reader:
+                if len(row) > 0:
+                    if psnumber != row[0]:
+                        updated_data.append(row)
+                        counter += 1
+                    else:
+                        intern_found = True
+
+        if intern_found is True:
+            with open(intern_database, "w", encoding="utf-8") as f:
+                writer = csv.writer(f)
+                writer.writerows(updated_data)
+            print("psnumber no. ", psnumber, "deleted successfully")
+        else:
+            print("psnumber No. not found in our database")
+
+        input("Press any key to continue")
+
+    def view_attendance(self):
+        global intern_atten
+        global intern_attendance
+
+        print("--- Attendance Records ---")
+
+        with open(intern_attendance, "r", encoding="utf-8") as f:
+            reader = csv.reader(f)
+            for y in intern_atten:
+                print(y, end='\t |')
+            print("\n---------------------------")
+
+            for row in reader:
+                for item in row:
+                    print(item, end="\t |")
+                print("\n")
+
+        input("Press any key to continue")
 
 
-def update_intern():
-    global intern_fields
-    global intern_database
+obj1 = employee()
 
-    print("--- Update intern ---")
-    psnumber = input("Enter psnumber no. to update: ")
-    index_intern = None
-    updated_data = []
-    with open(intern_database, "r", encoding="utf-8") as f:
-        reader = csv.reader(f)
-        counter = 0
-        for row in reader:
-            if len(row) > 0:
-                if psnumber == row[0]:
-                    index_intern = counter
-                    print("intern Found: at index ", index_intern)
-                    intern_data = []
-                    for field in intern_fields:
-                        value = input("Enter " + field + ": ")
-                        intern_data.append(value)
-                    updated_data.append(intern_data)
-                else:
-                    updated_data.append(row)
-                counter += 1
 
-    # Check if the record is found or not
-    if index_intern is not None:
-        with open(intern_database, "w", encoding="utf-8") as f:
+class intern():
+
+    def attendance_intern(self):
+        print("-------------------------")
+        print("Mark your attendance")
+        print("-------------------------")
+        global intern_atten
+        global intern_attendance
+
+        intern_data = []
+        for field in intern_atten:
+            value = input("Enter " + field + ": ")
+            intern_data.append(value)
+
+        with open(intern_attendance, "a", encoding="utf-8") as f:
             writer = csv.writer(f)
-            writer.writerows(updated_data)
-    else:
-        print("psnumber No. not found in our database")
+            writer.writerows([intern_data])
 
-    input("Press any key to continue")
-
-
-def delete_intern():
-    global intern_fields
-    global intern_database
-
-    print("--- Delete intern ---")
-    psnumber = input("Enter psnumber no. to delete: ")
-    intern_found = False
-    updated_data = []
-    with open(intern_database, "r", encoding="utf-8") as f:
-        reader = csv.reader(f)
-        counter = 0
-        for row in reader:
-            if len(row) > 0:
-                if psnumber != row[0]:
-                    updated_data.append(row)
-                    counter += 1
-                else:
-                    intern_found = True
-
-    if intern_found is True:
-        with open(intern_database, "w", encoding="utf-8") as f:
-            writer = csv.writer(f)
-            writer.writerows(updated_data)
-        print("psnumber no. ", psnumber, "deleted successfully")
-    else:
-        print("psnumber No. not found in our database")
-
-    input("Press any key to continue")
+        print("Data saved successfully")
+        input("Press any key to continue")
+        return
 
 
-def view_attendance():
-    global intern_atten
-    global intern_attendance
-
-    print("--- Attendance Records ---")
-
-    with open(intern_attendance, "r", encoding="utf-8") as f:
-        reader = csv.reader(f)
-        for y in intern_atten:
-            print(y, end='\t |')
-        print("\n---------------------------")
-
-        for row in reader:
-            for item in row:
-                print(item, end="\t |")
-            print("\n")
-
-    input("Press any key to continue")
-
+obj2 = intern()
 
 while True:
     display_menu()
@@ -209,24 +213,24 @@ while True:
         display_menu1()
         choice = input("Enter your choice: ")
         if choice == '1':
-            attendance_intern()
+            obj2.attendance_intern()
         else:
             break
     elif choice == '2':
         display_menu2()
         choice = input("Enter your choice: ")
         if choice == '1':
-            add_intern()
+            obj1.add_intern()
         elif choice == '2':
-            view_interns()
+            obj1.view_interns()
         elif choice == '3':
-            search_intern()
+            obj1.search_intern()
         elif choice == '4':
-            update_intern()
+            obj1.update_intern()
         elif choice == '5':
-            delete_intern()
+            obj1.delete_intern()
         elif choice == '6':
-            view_attendance()
+            obj1.view_attendance()
         else:
             break
     else:
@@ -235,4 +239,3 @@ while True:
 print("-------------------------------")
 print(" Thank you for using our L&T system")
 print("-------------------------------")
-
