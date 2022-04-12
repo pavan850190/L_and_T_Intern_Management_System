@@ -22,7 +22,7 @@ veryifying the details every day.
 
 ## Where
 
-In L&T officeer
+In L&T office
 
 ## Why
 
