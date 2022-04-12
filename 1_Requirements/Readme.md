@@ -10,19 +10,19 @@ An employee management system is a software, that helps your employees to give t
 
 ## Who
 
-Employees and Interns of L&T company members can acces
+L&T Management System is used by the industries to store the data of the employees. This system is used for any kind of industry whether it be small scale or large scale.
 
 ## When
 
-In the office time.
+The L&T Management System is now used in every industry to have all the info of the employee stored into file/database. This way all the list of employees working in a particular industry can be stored in one place
 
 ## What
 
-veryifying the details every day.
+It is helpful for the company organisation in order to save the complete data of each employee.
 
 ## Where
 
-In L&T office
+Face the issues in saving the data of Employee in companies, Industries etc.
 
 ## Why
 
@@ -30,7 +30,7 @@ To save time and efforts
 
 ## How
 
-we use software to store in database
+This issue can be solved by creating a database of employees and saving the information in a file.
 
 # SWOT
 
