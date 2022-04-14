@@ -48,17 +48,23 @@ class Employee:
     @staticmethod
     def login():
         """ login details """
-        print("------------------------")
-        print("Enter your user id(admin) : ")
-        user = input().lower()
-        print("Enter password please(1234) :")
-        password = int(input())
-        print("------------------------")
-        if user == "admin" and password == 1234:
-            return obj3.display_menu2()
-        else:
-            print("Please enter correct userid/password")
-        print("------------------------")
+        try:
+            print("---------------------------------------")
+            print("Enter your user id(admin) : ")
+            user = input().lower()
+            print("Enter password please(1234) :")
+            password = int(input())
+            print("---------------------------------------")
+            if user == "admin" and password == 1234:
+                return obj3.display_menu2()
+            else:
+                print("Please enter correct userid/password")
+                return obj1.login()
+            print("---------------------------------------")
+        except ValueError as e:
+            print("Please enter numeric password")
+            return obj1.login()
+            print(e)
 
     @staticmethod
     def view_interns():
@@ -205,6 +211,7 @@ class Employee:
 
         intern_data = []
         for field in INTERN_FIELDS:
+
             value = input("Enter " + field + ": ")
             intern_data.append(value)
 
@@ -273,6 +280,7 @@ while True:
         elif choice == '6':
             obj1.view_attendance()
         else:
+            print("\n Enter the  correct option \n")
             break
     elif choice == '3':
         exit()
