@@ -1,6 +1,16 @@
 # PYLINT
 ![image](https://user-images.githubusercontent.com/68550769/163315189-08ec0a9f-0a24-44fa-a18c-52bd21562ab0.png)
 
+# OUTPUT
+![1](https://user-images.githubusercontent.com/68550769/163383720-4a8faa75-9c7b-4919-a355-2da65558d69d.jpg)
+![2](https://user-images.githubusercontent.com/68550769/163383770-1e3bc95d-61a0-4b41-a5e3-8558433cf388.jpg)
+![3](https://user-images.githubusercontent.com/68550769/163383774-01b0da6b-1115-4a99-9ed7-e3291ca54fb0.jpg)
+![4](https://user-images.githubusercontent.com/68550769/163383779-f60ddf7f-7aa2-4a5b-b839-e4b09e3d26a5.jpg)
+![5](https://user-images.githubusercontent.com/68550769/163383784-10fed8ca-f660-4214-8323-29576625a387.jpg)
+![6](https://user-images.githubusercontent.com/68550769/163383786-8fc7ce6e-fc21-40ad-bd97-eb347cacd941.jpg)
+![7](https://user-images.githubusercontent.com/68550769/163383793-db6f4731-2936-4a78-a92b-e35a9bc5e764.jpg)
+![8](https://user-images.githubusercontent.com/68550769/163383796-baae6fa3-8424-41ab-8783-b5b5f6dc1f78.jpg)
+
 # TEST PLAN
 ## High Level Test Plan
 | Test ID | Description | Expected Input | Expected Output | Actual Output | Type Of Test |
